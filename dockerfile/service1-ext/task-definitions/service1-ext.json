@@ -1,0 +1,46 @@
+{
+    "networkMode": "bridge",
+    "taskRoleArn": null,
+    "containerDefinitions": [
+        {
+            "name": "service1-ext",
+            "image": "091036132616.dkr.ecr.ap-northeast-1.amazonaws.com/dfs-service1-ext:1.8",
+            "memory": "1024",
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "8080",
+                    "protocol": "tcp",
+                    "hostPort": "0"
+                }
+            ],
+            "environment": null,
+            "mountPoints": [
+                {
+                    "sourceVolume": "service1-ext-logs",
+                    "containerPath": "/usr/local/tomcat/logs",
+                    "readOnly": ""
+                }
+            ],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "readonlyRootFilesystem": false,
+            "extraHosts": null,
+            "logConfiguration": null,
+            "ulimits": null,
+            "dockerLabels": null
+        }
+    ],
+    "placementConstraints": [],
+    "volumes": [
+        {
+            "name": "service1-ext-logs",
+            "host": {
+                "sourcePath": "/var/log/service1-ext-logs"
+            }
+        }
+    ],
+    "family": "melody-dfs-service1-ext-dev-td"
+}
